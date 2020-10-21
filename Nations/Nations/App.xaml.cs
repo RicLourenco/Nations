@@ -5,6 +5,9 @@ using Nations.Views;
 using Xamarin.Essentials.Interfaces;
 using Xamarin.Essentials.Implementation;
 using Xamarin.Forms;
+using Nations.Services.Interfaces;
+using Nations.Services.Classes;
+using Syncfusion.Licensing;
 
 namespace Nations
 {
@@ -17,9 +20,11 @@ namespace Nations
 
         protected override async void OnInitialized()
         {
+            SyncfusionLicenseProvider.RegisterLicense("MzIyMjYwQDMxMzgyZTMyMmUzMFBYUGxzd0Nqc0lFMFo3MWFBWUpWZkVPT1hOY2JsUFMrRWRjeUhpRmVzanM9");
+
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(CountriesPage)}");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -29,6 +34,9 @@ namespace Nations
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<LoginPage, LoginPageViewModel>();
+            containerRegistry.RegisterForNavigation<CountryDetailPage, CountryDetailPageViewModel>();
+            containerRegistry.RegisterForNavigation<CountriesPage, CountriesPageViewModel>();
+            containerRegistry.Register<IApiService, ApiService>();
         }
     }
 }
