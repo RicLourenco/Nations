@@ -11,6 +11,8 @@ using Xamarin.Essentials;
 
 namespace Nations.ViewModels
 {
+    //TODO: Template
+    //TODO: Default selection to user's country if there's location authorization on startup
     class CountriesPageViewModel : ViewModelBase
     {
         readonly INavigationService _navigationService;
@@ -28,6 +30,7 @@ namespace Nations.ViewModels
             INavigationService navigationService,
             IApiService apiService) : base(navigationService)
         {
+            Title = "Countries list";
             _navigationService = navigationService;
             _apiService = apiService;
 
@@ -63,20 +66,22 @@ namespace Nations.ViewModels
         {
             if(Connectivity.NetworkAccess != NetworkAccess.Internet)
             {
-                //await App.Current.MainPage.DisplayAlert();
+                await App.Current.MainPage.DisplayAlert("Error", "No internet connection", "OK");
                 return;
             }
 
             IsRunning = true;
 
+            string url = App.Current.Resources["UrlAPI"].ToString();
+
             Response response = await _apiService.GetCountriesAsync<Country>(
-                "http://restcountries.eu",
-                "/rest/v2/all");
+                url, "/rest/v2/all");
 
             IsRunning = false;
+
             if (!response.IsSuccess)
             {
-                //await App.Current.MainPage.DisplayAlert();
+                await App.Current.MainPage.DisplayAlert("Error", response.Message, "OK");
                 return;
             }
 
@@ -93,29 +98,30 @@ namespace Nations.ViewModels
                     _myCountries.Select(c =>
                     new CountryViewModel(_navigationService)
                     {
-                        //Alpha2Code = c.Alpha2Code,
+                        Alpha2Code = c.Alpha2Code,
                         Alpha3Code = c.Alpha3Code,
-                        //AltSpellings = c.AltSpellings,
-                        //Area = c.Area,
-                        //Borders = c.Borders,
-                        //CallingCodes = c.CallingCodes,
-                        //Capital = c.Capital,
-                        //Cioc = c.Cioc,
-                        //Currencies = c.Currencies,
-                        //Demonym = c.Demonym,
-                        //Gini = c.Gini,
-                        //Languages = c.Languages,
-                        //Latlng = c.Latlng,
+                        AltSpellings = c.AltSpellings,
+                        Area = c.Area,
+                        Borders = c.Borders,
+                        CallingCodes = c.CallingCodes,
+                        Capital = c.Capital,
+                        Cioc = c.Cioc,
+                        Currencies = c.Currencies,
+                        Demonym = c.Demonym,
+                        Flag = c.Flag,
+                        Gini = c.Gini,
+                        Languages = c.Languages,
+                        Latlng = c.Latlng,
                         Name = c.Name,
-                        //NativeName = c.NativeName,
-                        //NumericCode = c.NumericCode,
-                        //Population = c.Population,
-                        //Region = c.Region,
-                        //RegionalBlocs = c.RegionalBlocs,
-                        //Subregion = c.Subregion,
-                        //Timezones = c.Timezones,
-                        //TopLevelDomain = c.TopLevelDomain,
-                        //Translations = c.Translations
+                        NativeName = c.NativeName,
+                        NumericCode = c.NumericCode,
+                        Population = c.Population,
+                        Region = c.Region,
+                        RegionalBlocs = c.RegionalBlocs,
+                        Subregion = c.Subregion,
+                        Timezones = c.Timezones,
+                        TopLevelDomain = c.TopLevelDomain,
+                        Translations = c.Translations
                     })
                     .ToList());
             }
@@ -125,29 +131,30 @@ namespace Nations.ViewModels
                     _myCountries.Select(c =>
                     new CountryViewModel(_navigationService)
                     {
-                        //Alpha2Code = c.Alpha2Code,
+                        Alpha2Code = c.Alpha2Code,
                         Alpha3Code = c.Alpha3Code,
-                        //AltSpellings = c.AltSpellings,
-                        //Area = c.Area,
-                        //Borders = c.Borders,
-                        //CallingCodes = c.CallingCodes,
-                        //Capital = c.Capital,
-                        //Cioc = c.Cioc,
-                        //Currencies = c.Currencies,
-                        //Demonym = c.Demonym,
-                        //Gini = c.Gini,
-                        //Languages = c.Languages,
-                        //Latlng = c.Latlng,
+                        AltSpellings = c.AltSpellings,
+                        Area = c.Area,
+                        Borders = c.Borders,
+                        CallingCodes = c.CallingCodes,
+                        Capital = c.Capital,
+                        Cioc = c.Cioc,
+                        Currencies = c.Currencies,
+                        Demonym = c.Demonym,
+                        Flag = c.Flag,
+                        Gini = c.Gini,
+                        Languages = c.Languages,
+                        Latlng = c.Latlng,
                         Name = c.Name,
-                        //NativeName = c.NativeName,
-                        //NumericCode = c.NumericCode,
-                        //Population = c.Population,
-                        //Region = c.Region,
-                        //RegionalBlocs = c.RegionalBlocs,
-                        //Subregion = c.Subregion,
-                        //Timezones = c.Timezones,
-                        //TopLevelDomain = c.TopLevelDomain,
-                        //Translations = c.Translations
+                        NativeName = c.NativeName,
+                        NumericCode = c.NumericCode,
+                        Population = c.Population,
+                        Region = c.Region,
+                        RegionalBlocs = c.RegionalBlocs,
+                        Subregion = c.Subregion,
+                        Timezones = c.Timezones,
+                        TopLevelDomain = c.TopLevelDomain,
+                        Translations = c.Translations
                     })
                     .Where(c => c.Name.ToLower().Contains(Search.ToLower()))
                     .ToList());

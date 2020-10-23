@@ -15,7 +15,7 @@
         public string Cioc { get; set; }
         public List<Currency> Currencies { get; set; }
         public string Demonym { get; set; }
-        public Uri Flag { get; set; }
+        public string Flag { get; set; }
         public double Gini { get; set; }
         public List<Language> Languages { get; set; }
         public List<double> Latlng { get; set; }

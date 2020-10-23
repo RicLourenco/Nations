@@ -41,10 +41,6 @@ namespace Nations.Services.Classes
                     NullValueHandling = NullValueHandling.Ignore
                 });
 
-                //DownloadFlags(countries);
-
-                //await ConvertFlags(countries);
-
                 return new Response
                 {
                     IsSuccess = true,
@@ -60,47 +56,5 @@ namespace Nations.Services.Classes
                 };
             }
         }
-
-
-        //public async Task ConvertFlags(List<Country> countries)
-        //{
-        //    throw new NotImplementedException();
-        //}
-
-        //public void DownloadFlags(List<Country> countries)
-        //{
-        //    if (!Directory.Exists("Flags"))
-        //    {
-        //        Directory.CreateDirectory("Flags");
-        //    }
-
-        //    foreach (var country in countries)
-        //    {
-        //        try
-        //        {
-        //            using (var flag = new WebClient())
-        //            {
-        //                flag.DownloadFileAsync(country.Flag, $@"Flags\{country.Name}.svg");
-        //            }
-        //        }
-        //        catch (Exception e)
-        //        {
-
-        //        }
-        //    }
-
-        //    try
-        //    {
-        //        var noFlag = new WebClient();
-
-        //        noFlag.DownloadFile("https://upload.wikimedia.org/wikipedia/commons/b/b0/No_flag.svg", $@"Flags\Default.svg");
-
-        //        noFlag.Dispose();
-        //    }
-        //    catch (Exception e)
-        //    {
-
-        //    }
-        //}
     }
 }
