@@ -37,6 +37,7 @@ namespace Nations
             containerRegistry.RegisterForNavigation<CountryDetailPage, CountryDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<CountriesPage, CountriesPageViewModel>();
             containerRegistry.Register<IApiService, ApiService>();
+            containerRegistry.Register<IDataFilteringService, DataFilteringService>();
         }
     }
 }

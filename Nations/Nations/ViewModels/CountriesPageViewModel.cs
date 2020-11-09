@@ -16,6 +16,7 @@ namespace Nations.ViewModels
     class CountriesPageViewModel : ViewModelBase
     {
         readonly INavigationService _navigationService;
+        IDataFilteringService _dataFilteringService;
         readonly IApiService _apiService;
 
         bool _isRunning;
@@ -28,11 +29,13 @@ namespace Nations.ViewModels
 
         public CountriesPageViewModel(
             INavigationService navigationService,
-            IApiService apiService) : base(navigationService)
+            IApiService apiService,
+            IDataFilteringService dataFilteringService) : base(navigationService)
         {
             Title = "Countries list";
             _navigationService = navigationService;
             _apiService = apiService;
+            _dataFilteringService = dataFilteringService;
 
             LoadCountriesAsync();
         }
@@ -98,29 +101,29 @@ namespace Nations.ViewModels
                     _myCountries.Select(c =>
                     new CountryViewModel(_navigationService)
                     {
-                        Alpha2Code = c.Alpha2Code,
-                        Alpha3Code = c.Alpha3Code,
-                        AltSpellings = c.AltSpellings,
+                        Alpha2Code = _dataFilteringService.CheckString(c.Alpha2Code),
+                        Alpha3Code = _dataFilteringService.CheckString(c.Alpha3Code),
+                        AltSpellings = _dataFilteringService.CheckStringList(c.AltSpellings),
                         Area = c.Area,
-                        Borders = c.Borders,
-                        CallingCodes = c.CallingCodes,
-                        Capital = c.Capital,
-                        Cioc = c.Cioc,
+                        Borders = _dataFilteringService.CheckStringList(c.Borders),
+                        CallingCodes = _dataFilteringService.CheckStringList(c.CallingCodes),
+                        Capital = _dataFilteringService.CheckString(c.Capital),
+                        Cioc = _dataFilteringService.CheckString(c.Cioc),
                         Currencies = c.Currencies,
-                        Demonym = c.Demonym,
+                        Demonym = _dataFilteringService.CheckString(c.Demonym),
                         Flag = c.Flag,
                         Gini = c.Gini,
                         Languages = c.Languages,
                         Latlng = c.Latlng,
-                        Name = c.Name,
-                        NativeName = c.NativeName,
-                        NumericCode = c.NumericCode,
+                        Name = _dataFilteringService.CheckString(c.Name),
+                        NativeName = _dataFilteringService.CheckString(c.NativeName),
+                        NumericCode = _dataFilteringService.CheckString(c.NumericCode),
                         Population = c.Population,
-                        Region = c.Region,
+                        Region = _dataFilteringService.CheckString(c.Region),
                         RegionalBlocs = c.RegionalBlocs,
-                        Subregion = c.Subregion,
-                        Timezones = c.Timezones,
-                        TopLevelDomain = c.TopLevelDomain,
+                        Subregion = _dataFilteringService.CheckString(c.Subregion),
+                        Timezones = _dataFilteringService.CheckStringList(c.Timezones),
+                        TopLevelDomain = _dataFilteringService.CheckStringList(c.TopLevelDomain),
                         Translations = c.Translations
                     })
                     .ToList());
@@ -131,29 +134,29 @@ namespace Nations.ViewModels
                     _myCountries.Select(c =>
                     new CountryViewModel(_navigationService)
                     {
-                        Alpha2Code = c.Alpha2Code,
-                        Alpha3Code = c.Alpha3Code,
-                        AltSpellings = c.AltSpellings,
+                        Alpha2Code = _dataFilteringService.CheckString(c.Alpha2Code),
+                        Alpha3Code = _dataFilteringService.CheckString(c.Alpha3Code),
+                        AltSpellings = _dataFilteringService.CheckStringList(c.AltSpellings),
                         Area = c.Area,
-                        Borders = c.Borders,
-                        CallingCodes = c.CallingCodes,
-                        Capital = c.Capital,
-                        Cioc = c.Cioc,
+                        Borders = _dataFilteringService.CheckStringList(c.Borders),
+                        CallingCodes = _dataFilteringService.CheckStringList(c.CallingCodes),
+                        Capital = _dataFilteringService.CheckString(c.Capital),
+                        Cioc = _dataFilteringService.CheckString(c.Cioc),
                         Currencies = c.Currencies,
-                        Demonym = c.Demonym,
+                        Demonym = _dataFilteringService.CheckString(c.Demonym),
                         Flag = c.Flag,
                         Gini = c.Gini,
                         Languages = c.Languages,
                         Latlng = c.Latlng,
-                        Name = c.Name,
-                        NativeName = c.NativeName,
-                        NumericCode = c.NumericCode,
+                        Name = _dataFilteringService.CheckString(c.Name),
+                        NativeName = _dataFilteringService.CheckString(c.NativeName),
+                        NumericCode = _dataFilteringService.CheckString(c.NumericCode),
                         Population = c.Population,
-                        Region = c.Region,
+                        Region = _dataFilteringService.CheckString(c.Region),
                         RegionalBlocs = c.RegionalBlocs,
-                        Subregion = c.Subregion,
-                        Timezones = c.Timezones,
-                        TopLevelDomain = c.TopLevelDomain,
+                        Subregion = _dataFilteringService.CheckString(c.Subregion),
+                        Timezones = _dataFilteringService.CheckStringList(c.Timezones),
+                        TopLevelDomain = _dataFilteringService.CheckStringList(c.TopLevelDomain),
                         Translations = c.Translations
                     })
                     .Where(c => c.Name.ToLower().Contains(Search.ToLower()))

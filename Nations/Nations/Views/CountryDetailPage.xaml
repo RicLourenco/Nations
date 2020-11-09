@@ -30,59 +30,406 @@
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
+                    
+                    <!--<gradient:SfGradientView>
+                        <gradient:SfGradientView.BackgroundBrush>
+                            <gradient:SfLinearGradientBrush>
+                                <gradient:SfLinearGradientBrush.GradientStops>
+                                    <gradient:SfGradientStop Color="#2d265b" Offset="0.0" />
+                                    <gradient:SfGradientStop Color="#b8495c" Offset="1.0" />
+                                </gradient:SfLinearGradientBrush.GradientStops>
+                            </gradient:SfLinearGradientBrush>
+                        </gradient:SfGradientView.BackgroundBrush>
+                    </gradient:SfGradientView>-->
+                    
                     <Label Grid.Row="0"
-                           Grid.Column="0">Country Name:</Label>
+                           Grid.Column="0">Country name:</Label>
 
                     <Label Grid.Row="0"
                            Grid.Column="1"
+                           HorizontalOptions="Start"
                            Text="{Binding Country.Name}"/>
 
                     <Label Grid.Row="1"
-                           Grid.Column="0">Alpha 2 Code:</Label>
+                           Grid.Column="0">Alpha 2 code:</Label>
 
                     <Label Grid.Row="1"
                            Grid.Column="1"
                            Text="{Binding Country.Alpha2Code}"/>
 
                     <Label Grid.Row="2"
-                           Grid.Column="0">Alpha 3 Code:</Label>
+                           Grid.Column="0">Alpha 3 code:</Label>
 
                     <Label Grid.Row="2"
                            Grid.Column="1"
                            Text="{Binding Country.Alpha3Code}"/>
 
                     <Label Grid.Row="3"
+                           Grid.Column="0">Alternate spellings:</Label>
+
+                    <ListView Grid.Row="3"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              RowHeight="23"
+                              ItemsSource="{Binding Country.AltSpellings}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding}" />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label Grid.Row="4"
+                           Grid.Column="0">Area:</Label>
+
+                    <Label Grid.Row="4"
+                           Grid.Column="1"
+                           Text="{Binding Country.Area, StringFormat='{0:N2}'}"/>
+
+                    <Label Grid.Row="5"
+                           Grid.Column="0">Borders:</Label>
+
+                    <ListView Grid.Row="5"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              RowHeight="23"
+                              ItemsSource="{Binding Country.Borders}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding}" />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label Grid.Row="6"
+                           Grid.Column="0">Calling codes:</Label>
+
+                    <ListView Grid.Row="6"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              RowHeight="23"
+                              ItemsSource="{Binding Country.CallingCodes}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding}" />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label Grid.Row="7"
                            Grid.Column="0">Capital:</Label>
 
-                    <Label Grid.Row="3"
+                    <Label Grid.Row="7"
                            Grid.Column="1"
                            Text="{Binding Country.Capital}"/>
-                    
-                    
-                    
-                    <Label Grid.Row=""
-                           Grid.Column="0">Gini:</Label>
 
-                    <Label Grid.Row=""
+                    <Label Grid.Row="8"
+                           Grid.Column="0">Cioc:</Label>
+
+                    <Label Grid.Row="8"
+                           Grid.Column="1"
+                           Text="{Binding Country.Cioc}"/>
+
+                    <Label Grid.Row="9"
+                           Grid.Column="0">Currencies:</Label>
+
+                    <CollectionView Grid.Row="9"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              ItemsSource="{Binding Country.Currencies}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <StackLayout Grid.Column="0">
+                                        <Label Grid.Row="0" >Code:</Label>
+                                        <Label Grid.Row="1" >Name:</Label>
+                                        <Label Grid.Row="2" >Symbol:</Label>
+                                    </StackLayout>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Grid.Row="0"  Text="{Binding Code}" />
+                                        <Label Grid.Row="1"  Text="{Binding Name}" />
+                                        <Label Grid.Row="2"  HorizontalOptions="Start" Text="{Binding Symbol}" />
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label Grid.Row="10"
+                           Grid.Column="0">Demonym:</Label>
+
+                    <Label Grid.Row="10"
+                           Grid.Column="1"
+                           Text="{Binding Country.Demonym}"/>
+
+                    <Label Grid.Row="11"
+                           Grid.Column="0">Gini index:</Label>
+
+                    <Label Grid.Row="11"
                            Grid.Column="1"
                            Text="{Binding Country.Gini}"/>
 
-                    <Label Grid.Row=""
+                    <Label Grid.Row="12"
+                           Grid.Column="0">Languages:</Label>
+
+                    <CollectionView Grid.Row="12"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              ItemsSource="{Binding Country.Languages}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0">Name:</Label>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" />
+                                    <Label Grid.Row="1" Grid.Column="0">Native name:</Label>
+                                    <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Text="{Binding NativeName}" />
+                                    <Label Grid.Row="2" Grid.Column="0">Iso639 1:</Label>
+                                    <Label Grid.Row="2" Grid.Column="1" Text="{Binding Iso639_1}" />
+                                    <Label Grid.Row="3" Grid.Column="0">Iso639 2:</Label>
+                                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding Iso639_2}" />
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label Grid.Row="13"
+                           Grid.Column="0">Latitude &amp; longitude:</Label>
+
+                    <ListView Grid.Row="13"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              RowHeight="23"
+                              ItemsSource="{Binding Country.Latlng}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding}" />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label Grid.Row="14"
+                           Grid.Column="0">Native name:</Label>
+
+                    <Label Grid.Row="14"
+                           Grid.Column="1"
+                           HorizontalOptions="Start"
+                           Text="{Binding Country.NativeName}"/>
+
+                    <Label Grid.Row="15"
+                           Grid.Column="0">Numeric code:</Label>
+
+                    <Label Grid.Row="15"
+                           Grid.Column="1"
+                           Text="{Binding Country.NumericCode}"/>
+                    
+                    <Label Grid.Row="16"
+                           Grid.Column="0">Population:</Label>
+
+                    <Label Grid.Row="16"
+                           Grid.Column="1"
+                           Text="{Binding Country.Population}"/>
+
+                    <Label Grid.Row="17"
                            Grid.Column="0">Region:</Label>
 
-                    <Label Grid.Row=""
+                    <Label Grid.Row="17"
                            Grid.Column="1"
                            Text="{Binding Country.Region}"/>
 
-                    <Label Grid.Row=""
-                           Grid.Column="0">Population:</Label>
+                    <Label Grid.Row="18"
+                           Grid.Column="0">Regional blocks:</Label>
 
-                    <Label Grid.Row=""
+                    <!--<Label Grid.Row="18"
                            Grid.Column="1"
-                           Text="{Binding Country.Population, StringFormat='{0:N2}'}"/>
-                    
+                           Text="{Binding Country.RegionalBlocs}"/>-->
+
+                    <CollectionView Grid.Row="18"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              ItemsSource="{Binding Country.RegionalBlocs}">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0">Name:</Label>
+                                    <Label Grid.Row="0" Grid.Column="1" Text="{Binding Name}" />
+                                    <Label Grid.Row="1" Grid.Column="0">Native name:</Label>
+                                    <Label Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Text="{Binding Acronym}" />
+                                    <Label Grid.Row="2" Grid.Column="0">Other names:</Label>
+                                    <ListView Grid.Row="2"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              RowHeight="23"
+                                              ItemsSource="{Binding OtherNames}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Label Text="{Binding}" />
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                    <Label Grid.Row="3" Grid.Column="0">Other acronyms:</Label>
+                                    <ListView Grid.Row="3"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              RowHeight="23"
+                                              ItemsSource="{Binding OtherAcronyms}">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate>
+                                                <ViewCell>
+                                                    <Label Text="{Binding}" />
+                                                </ViewCell>
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </Grid>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <Label Grid.Row="19"
+                           Grid.Column="0">Subregion:</Label>
+
+                    <Label Grid.Row="19"
+                           Grid.Column="1"
+                           Text="{Binding Country.Subregion}"/>
+
+                    <Label Grid.Row="20"
+                           Grid.Column="0">Time zones:</Label>
+
+                    <ListView Grid.Row="20"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              RowHeight="23"
+                              ItemsSource="{Binding Country.Timezones}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding}" />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label Grid.Row="21"
+                           Grid.Column="0">Top level domain:</Label>
+
+                    <ListView Grid.Row="21"
+                              Grid.Column="1"
+                              IsEnabled="False"
+                              RowHeight="23"
+                              ItemsSource="{Binding Country.TopLevelDomain}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Label Text="{Binding}" />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <Label Grid.Row="22"
+                           Grid.Column="0">Translations:</Label>
+
+                    <StackLayout Grid.Row="22"
+                              Grid.Column="1"
+                              IsEnabled="False">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+                            <Label Grid.Row="0" Grid.Column="0">German:</Label>
+                            <Label Grid.Row="0" Grid.Column="1" Text="{Binding Country.Translations.De}" />
+                            <Label Grid.Row="1" Grid.Column="0">Spanish:</Label>
+                            <Label Grid.Row="1" Grid.Column="1" Text="{Binding Country.Translations.Es}" />
+                            <Label Grid.Row="2" Grid.Column="0">French:</Label>
+                            <Label Grid.Row="2" Grid.Column="1" Text="{Binding Country.Translations.Fr}" />
+                            <Label Grid.Row="3" Grid.Column="0">Japanese:</Label>
+                            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Country.Translations.Ja}" />
+                            <Label Grid.Row="4" Grid.Column="0">Italian:</Label>
+                            <Label Grid.Row="4" Grid.Column="1" Text="{Binding Country.Translations.It}" />
+                            <Label Grid.Row="5" Grid.Column="0">Brazillian-portuguese:</Label>
+                            <Label Grid.Row="5" Grid.Column="1" Text="{Binding Country.Translations.Br}" />
+                            <Label Grid.Row="6" Grid.Column="0">Portuguese:</Label>
+                            <Label Grid.Row="6" Grid.Column="1" Text="{Binding Country.Translations.Pt}" />
+                            <Label Grid.Row="7" Grid.Column="0">Dutch:</Label>
+                            <Label Grid.Row="7" Grid.Column="1" Text="{Binding Country.Translations.Nl}" />
+                            <Label Grid.Row="8" Grid.Column="0">Croatian:</Label>
+                            <Label Grid.Row="8" Grid.Column="1" Text="{Binding Country.Translations.Hr}" />
+                            <Label Grid.Row="9" Grid.Column="0">Persian:</Label>
+                            <Label Grid.Row="9" Grid.Column="1" HorizontalOptions="Start" Text="{Binding Country.Translations.Fa}" />
+                        </Grid>
+                    </StackLayout>
                 </Grid>
             </StackLayout>
         </ScrollView>

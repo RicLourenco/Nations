@@ -1,4 +1,5 @@
 ﻿using Nations.Models;
+using Nations.Services.Interfaces;
 using Nations.Views;
 using Prism.Commands;
 using Prism.Navigation;
@@ -13,7 +14,8 @@ namespace Nations.ViewModels
         readonly INavigationService _navigationService;
         DelegateCommand _selectCountryCommand;
 
-        public CountryViewModel(INavigationService navigationService)
+        public CountryViewModel(
+            INavigationService navigationService)
         {
             _navigationService = navigationService;
         }

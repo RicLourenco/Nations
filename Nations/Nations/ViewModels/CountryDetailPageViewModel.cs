@@ -1,4 +1,5 @@
 ﻿using Nations.Models;
+using Nations.Services.Interfaces;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Navigation;
@@ -6,15 +7,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Xamarin.Forms;
 
 namespace Nations.ViewModels
 {
-    //TODO: Show all country's info
     public class CountryDetailPageViewModel : ViewModelBase
     {
         Country _country;
-
-
 
         public CountryDetailPageViewModel(
             INavigationService navigationService)
