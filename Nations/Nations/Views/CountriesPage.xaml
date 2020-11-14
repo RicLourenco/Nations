@@ -7,9 +7,10 @@
              Title="{Binding Title}"
              xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
 
-    <StackLayout>
-        <SearchBar SearchCommand="{Binding SearchCommand}" Text="{Binding Search}"/>
-        <CollectionView  ItemsSource="{Binding Countries}">
+    <StackLayout BackgroundColor="Goldenrod">
+        <SearchBar Margin="7" CancelButtonColor="Black" BackgroundColor="LightGray" Placeholder="Search country name..." PlaceholderColor="DarkGray" TextColor="Black" SearchCommand="{Binding SearchCommand}" Text="{Binding Search}"/>
+
+        <CollectionView ItemsSource="{Binding Countries}">
             <CollectionView.ItemsLayout>
                 <GridItemsLayout Orientation="Vertical"/>
             </CollectionView.ItemsLayout>
@@ -38,7 +39,12 @@
                             <Label Text="{Binding Name}" 
                                    FontAttributes="Bold"
                                    FontSize="Medium"
-                                   LineBreakMode="TailTruncation" />
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="White" />
+                            <Label Text="{Binding Capital}" 
+                                   FontSize="Small"
+                                   LineBreakMode="TailTruncation"
+                                   TextColor="White" />
                         </StackLayout>
                         <Image Grid.Column="2" 
                                Source="ic_more_vert"/>

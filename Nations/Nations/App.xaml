@@ -8,6 +8,10 @@
     <!-- Application resource dictionary -->
         <ResourceDictionary>
             <x:String x:Key="UrlAPI">http://restcountries.eu</x:String>
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="Color.Goldenrod" />
+                <Setter Property="BarTextColor" Value="Color.White" />
+            </Style>
         </ResourceDictionary>
 
         <!-- Colors -->
