@@ -5,6 +5,7 @@ using Prism.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Xamarin.Essentials;
@@ -16,7 +17,7 @@ namespace Nations.ViewModels
     class CountriesPageViewModel : ViewModelBase
     {
         readonly INavigationService _navigationService;
-        IDataFilteringService _dataFilteringService;
+        readonly IDataFilteringService _dataFilteringService;
         readonly IApiService _apiService;
 
         bool _isRunning;
@@ -103,10 +104,10 @@ namespace Nations.ViewModels
                     {
                         Alpha2Code = _dataFilteringService.CheckString(c.Alpha2Code),
                         Alpha3Code = _dataFilteringService.CheckString(c.Alpha3Code),
-                        AltSpellings = _dataFilteringService.CheckStringList(c.AltSpellings),
+                        AltSpellings = _dataFilteringService.CheckListOfStrings(c.AltSpellings),
                         Area = c.Area,
-                        Borders = _dataFilteringService.CheckStringList(c.Borders),
-                        CallingCodes = _dataFilteringService.CheckStringList(c.CallingCodes),
+                        Borders = _dataFilteringService.CheckListOfStrings(c.Borders),
+                        CallingCodes = _dataFilteringService.CheckListOfStrings(c.CallingCodes),
                         Capital = _dataFilteringService.CheckString(c.Capital),
                         Cioc = _dataFilteringService.CheckString(c.Cioc),
                         Currencies = c.Currencies,
@@ -115,15 +116,17 @@ namespace Nations.ViewModels
                         Gini = c.Gini,
                         Languages = c.Languages,
                         Latlng = c.Latlng,
-                        Name = _dataFilteringService.CheckString(c.Name),
+                        Name = c.Alpha2Code == RegionInfo.CurrentRegion.Name ?
+                        _dataFilteringService.CheckString(c.Name) + " (Current country)" :
+                        _dataFilteringService.CheckString(c.Name),
                         NativeName = _dataFilteringService.CheckString(c.NativeName),
                         NumericCode = _dataFilteringService.CheckString(c.NumericCode),
                         Population = c.Population,
                         Region = _dataFilteringService.CheckString(c.Region),
-                        RegionalBlocs = c.RegionalBlocs,
+                        RegionalBlocs = _dataFilteringService.CheckRegionalBlocsList(c.RegionalBlocs),
                         Subregion = _dataFilteringService.CheckString(c.Subregion),
-                        Timezones = _dataFilteringService.CheckStringList(c.Timezones),
-                        TopLevelDomain = _dataFilteringService.CheckStringList(c.TopLevelDomain),
+                        Timezones = _dataFilteringService.CheckListOfStrings(c.Timezones),
+                        TopLevelDomain = _dataFilteringService.CheckListOfStrings(c.TopLevelDomain),
                         Translations = c.Translations
                     })
                     .ToList());
@@ -136,10 +139,10 @@ namespace Nations.ViewModels
                     {
                         Alpha2Code = _dataFilteringService.CheckString(c.Alpha2Code),
                         Alpha3Code = _dataFilteringService.CheckString(c.Alpha3Code),
-                        AltSpellings = _dataFilteringService.CheckStringList(c.AltSpellings),
+                        AltSpellings = _dataFilteringService.CheckListOfStrings(c.AltSpellings),
                         Area = c.Area,
-                        Borders = _dataFilteringService.CheckStringList(c.Borders),
-                        CallingCodes = _dataFilteringService.CheckStringList(c.CallingCodes),
+                        Borders = _dataFilteringService.CheckListOfStrings(c.Borders),
+                        CallingCodes = _dataFilteringService.CheckListOfStrings(c.CallingCodes),
                         Capital = _dataFilteringService.CheckString(c.Capital),
                         Cioc = _dataFilteringService.CheckString(c.Cioc),
                         Currencies = c.Currencies,
@@ -148,15 +151,17 @@ namespace Nations.ViewModels
                         Gini = c.Gini,
                         Languages = c.Languages,
                         Latlng = c.Latlng,
-                        Name = _dataFilteringService.CheckString(c.Name),
+                        Name = c.Alpha2Code == RegionInfo.CurrentRegion.Name ?
+                        _dataFilteringService.CheckString(c.Name) + " (Current country)" :
+                        _dataFilteringService.CheckString(c.Name),
                         NativeName = _dataFilteringService.CheckString(c.NativeName),
                         NumericCode = _dataFilteringService.CheckString(c.NumericCode),
                         Population = c.Population,
                         Region = _dataFilteringService.CheckString(c.Region),
-                        RegionalBlocs = c.RegionalBlocs,
+                        RegionalBlocs = _dataFilteringService.CheckRegionalBlocsList(c.RegionalBlocs),
                         Subregion = _dataFilteringService.CheckString(c.Subregion),
-                        Timezones = _dataFilteringService.CheckStringList(c.Timezones),
-                        TopLevelDomain = _dataFilteringService.CheckStringList(c.TopLevelDomain),
+                        Timezones = _dataFilteringService.CheckListOfStrings(c.Timezones),
+                        TopLevelDomain = _dataFilteringService.CheckListOfStrings(c.TopLevelDomain),
                         Translations = c.Translations
                     })
                     .Where(c => c.Name.ToLower().Contains(Search.ToLower()))
