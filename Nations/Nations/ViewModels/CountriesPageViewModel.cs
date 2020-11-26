@@ -73,12 +73,6 @@ namespace Nations.ViewModels
 
         async void LoadCountriesAsync()
         {
-            if(Connectivity.NetworkAccess != NetworkAccess.Internet)
-            {
-                await App.Current.MainPage.DisplayAlert("Error", "No internet connection", "OK");
-                return;
-            }
-
             IsRunning = true;
             IsVisible = true;
 

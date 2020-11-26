@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using Nations.Services.Interfaces;
 using Nations.Services.Classes;
 using Syncfusion.Licensing;
+using Xamarin.Essentials;
 
 namespace Nations
 {
@@ -24,7 +25,14 @@ namespace Nations
 
             InitializeComponent();
 
-            await NavigationService.NavigateAsync($"NavigationPage/{nameof(CountriesPage)}");
+            if (Connectivity.NetworkAccess != NetworkAccess.Internet)
+            {
+                await NavigationService.NavigateAsync($"NavigationPage/{nameof(MainPage)}");
+            }
+            else
+            {
+                await NavigationService.NavigateAsync($"NavigationPage/{nameof(CountriesPage)}");
+            }
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
