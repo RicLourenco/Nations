@@ -8,17 +8,8 @@ namespace Nations.Services.Classes
 {
     public class DataFilteringService : IDataFilteringService
     {
-        public string CheckString(string prop)
-        {
-            //if (string.IsNullOrEmpty(prop))
-            //{
-            //    return "N/A";
-            //}
-
-            //return prop;
-
-            return string.IsNullOrEmpty(prop) ? "N/A" : prop;
-        }
+        public string CheckString(string prop) =>
+            string.IsNullOrEmpty(prop) ? "N/A" : prop;
 
         public List<string> CheckListOfStrings(List<string> list)
         {
@@ -30,17 +21,17 @@ namespace Nations.Services.Classes
             return list;
         }
 
-        public List<RegionalBloc> CheckRegionalBlocsList(List<RegionalBloc> list)
+        public List<RegionalBloc> CheckRegionalBlocsList(List<RegionalBloc> regionalBlocs)
         {
-            foreach(var rb in list)
+            foreach(var regionalBloc in regionalBlocs)
             {
-                rb.Name = CheckString(rb.Name);
-                rb.Acronym = CheckString(rb.Acronym);
-                rb.OtherAcronyms = CheckListOfStrings(rb.OtherAcronyms);
-                rb.OtherNames = CheckListOfStrings(rb.OtherNames);
+                regionalBloc.Name = CheckString(regionalBloc.Name);
+                regionalBloc.Acronym = CheckString(regionalBloc.Acronym);
+                regionalBloc.OtherAcronyms = CheckListOfStrings(regionalBloc.OtherAcronyms);
+                regionalBloc.OtherNames = CheckListOfStrings(regionalBloc.OtherNames);
             }
 
-            return list;
+            return regionalBlocs;
         }
     }
 }

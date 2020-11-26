@@ -8,7 +8,21 @@
              xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
 
     <StackLayout BackgroundColor="Goldenrod">
-        <SearchBar Margin="7" CancelButtonColor="Black" BackgroundColor="LightGray" Placeholder="Search country name..." PlaceholderColor="DarkGray" TextColor="Black" SearchCommand="{Binding SearchCommand}" Text="{Binding Search}"/>
+        
+        <SearchBar
+            Margin="7"
+            CancelButtonColor="Black"
+            BackgroundColor="LightGray"
+            Placeholder="Search country name..."
+            PlaceholderColor="DarkGray"
+            TextColor="Black"
+            SearchCommand="{Binding SearchCommand}"
+            Text="{Binding Search}"/>
+
+        <ActivityIndicator
+            Color="White"
+            IsVisible="{Binding IsVisible}"
+            IsRunning="{Binding IsRunning}" />
 
         <CollectionView ItemsSource="{Binding Countries}">
             <CollectionView.ItemsLayout>

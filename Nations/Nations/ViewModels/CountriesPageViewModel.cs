@@ -12,14 +12,13 @@ using Xamarin.Essentials;
 
 namespace Nations.ViewModels
 {
-    //TODO: Template
-    //TODO: Default selection to user's country if there's location authorization on startup
     class CountriesPageViewModel : ViewModelBase
     {
         readonly INavigationService _navigationService;
         readonly IDataFilteringService _dataFilteringService;
         readonly IApiService _apiService;
 
+        bool _isVisible;
         bool _isRunning;
 
         string _search;
@@ -60,6 +59,12 @@ namespace Nations.ViewModels
             set => SetProperty(ref _isRunning, value);
         }
 
+        public bool IsVisible
+        {
+            get => _isVisible;
+            set => SetProperty(ref _isVisible, value);
+        }
+
         public ObservableCollection<CountryViewModel> Countries
         {
             get => _countries;
@@ -75,6 +80,7 @@ namespace Nations.ViewModels
             }
 
             IsRunning = true;
+            IsVisible = true;
 
             string url = App.Current.Resources["UrlAPI"].ToString();
 
@@ -92,6 +98,9 @@ namespace Nations.ViewModels
             _myCountries = (List<Country>)response.Result;
 
             ShowCountries();
+
+            IsRunning = false;
+            IsVisible = false;
         }
 
         void ShowCountries()
@@ -117,8 +126,8 @@ namespace Nations.ViewModels
                         Languages = c.Languages,
                         Latlng = c.Latlng,
                         Name = c.Alpha2Code == RegionInfo.CurrentRegion.Name ?
-                        _dataFilteringService.CheckString(c.Name) + " (Current country)" :
-                        _dataFilteringService.CheckString(c.Name),
+                            _dataFilteringService.CheckString(c.Name) + " (Current country)" :
+                            _dataFilteringService.CheckString(c.Name),
                         NativeName = _dataFilteringService.CheckString(c.NativeName),
                         NumericCode = _dataFilteringService.CheckString(c.NumericCode),
                         Population = c.Population,
@@ -152,8 +161,8 @@ namespace Nations.ViewModels
                         Languages = c.Languages,
                         Latlng = c.Latlng,
                         Name = c.Alpha2Code == RegionInfo.CurrentRegion.Name ?
-                        _dataFilteringService.CheckString(c.Name) + " (Current country)" :
-                        _dataFilteringService.CheckString(c.Name),
+                            _dataFilteringService.CheckString(c.Name) + " (Current country)" :
+                            _dataFilteringService.CheckString(c.Name),
                         NativeName = _dataFilteringService.CheckString(c.NativeName),
                         NumericCode = _dataFilteringService.CheckString(c.NumericCode),
                         Population = c.Population,

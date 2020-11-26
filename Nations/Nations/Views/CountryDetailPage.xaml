@@ -10,8 +10,10 @@
     <StackLayout
         Padding="5"
         BackgroundColor="Goldenrod">
+
         <ScrollView>
             <StackLayout>
+
                 <ffSvg:SvgCachedImage
                     Source="{Binding Country.Flag}" 
                     CacheDuration= "50"
