@@ -7,17 +7,20 @@
              xmlns:ffSvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              Title="{Binding Title}">
 
-    <StackLayout Padding="5" BackgroundColor="Goldenrod">
+    <StackLayout
+        Padding="5"
+        BackgroundColor="Goldenrod">
         <ScrollView>
             <StackLayout>
-                <ffSvg:SvgCachedImage Source="{Binding Country.Flag}" 
-                                        CacheDuration= "50"
-                                        Margin="5"
-                                        RetryCount= "3"
-                                        RetryDelay= "600"
-                                        WidthRequest="100"
-                                        HeightRequest="75" 
-                                        HorizontalOptions="Start" />
+                <ffSvg:SvgCachedImage
+                    Source="{Binding Country.Flag}" 
+                    CacheDuration= "50"
+                    Margin="5"
+                    RetryCount= "3"
+                    RetryDelay= "600"
+                    WidthRequest="100"
+                    HeightRequest="75" 
+                    HorizontalOptions="Start" />
 
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -25,7 +28,6 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition Height="Auto"/>
@@ -51,365 +53,577 @@
                         <RowDefinition Height="Auto"/>
                     </Grid.RowDefinitions>
 
-                    <Label Grid.Row="0"
-                           Grid.Column="0" TextColor="White">Country name:</Label>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Country name:
+                    </Label>
 
-                    <Label Grid.Row="0"
-                           Grid.Column="1"
-                           HorizontalOptions="Start"
-                           TextColor="White"
-                           Text="{Binding Country.Name}"/>
+                    <Label
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HorizontalOptions="Start"
+                        TextColor="White"
+                        Text="{Binding Country.Name}"/>
 
-                    <Label Grid.Row="1"
-                           Grid.Column="0" TextColor="White">Alpha 2 code:</Label>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Alpha 2 code:
+                    </Label>
 
-                    <Label Grid.Row="1"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Alpha2Code}"/>
+                    <Label
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Alpha2Code}"/>
 
-                    <Label Grid.Row="2"
-                           Grid.Column="0" TextColor="White">Alpha 3 code:</Label>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Alpha 3 code:
+                    </Label>
 
-                    <Label Grid.Row="2"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Alpha3Code}"/>
+                    <Label
+                        Grid.Row="2"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Alpha3Code}"/>
 
-                    <Label Grid.Row="3"
-                           Grid.Column="0" TextColor="White">Alternate spellings:</Label>
+                    <Label
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Alternate spellings:
+                    </Label>
 
-                    <ListView Grid.Row="3"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="23"
-                              ItemsSource="{Binding Country.AltSpellings}">
-                        <ListView.ItemTemplate>
+                    <StackLayout
+                        Grid.Row="3"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.AltSpellings}">
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Label TextColor="White" Text="{Binding}" />
-                                </ViewCell>
+                                <Label
+                                    TextColor="White"
+                                    Text="{Binding}" />
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <Label Grid.Row="4"
-                           Grid.Column="0" TextColor="White">Area:</Label>
-
-                    <Label Grid.Row="4"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Area, StringFormat='{0:N2}'}"/>
-
-                    <Label Grid.Row="5"
-                           Grid.Column="0" TextColor="White">Borders:</Label>
-
-                    <ListView Grid.Row="5"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="23"
-                              ItemsSource="{Binding Country.Borders}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Label TextColor="White" Text="{Binding}" />
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <Label Grid.Row="6"
-                           Grid.Column="0" TextColor="White">Calling codes:</Label>
-
-                    <ListView Grid.Row="6"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="23"
-                              ItemsSource="{Binding Country.CallingCodes}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Label TextColor="White" Text="{Binding}" />
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <Label Grid.Row="7"
-                           Grid.Column="0"
-                           TextColor="White">Capital:</Label>
-
-                    <Label Grid.Row="7"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Capital}"/>
-
-                    <Label Grid.Row="8"
-                           Grid.Column="0"
-                           TextColor="White">Cioc:</Label>
-
-                    <Label Grid.Row="8"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Cioc}"/>
-
-                    <Label Grid.Row="9"
-                           Grid.Column="0"
-                           TextColor="White">Currencies:</Label>
-
-                    <ListView Grid.Row="9"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="70"
-                              ItemsSource="{Binding Country.Currencies}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label TextColor="White" Grid.Row="0" Grid.Column="0">Code:</Label>
-                                        <Label TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Code}" />
-                                        <Label TextColor="White" Grid.Row="1" Grid.Column="0">Name:</Label>
-                                        <Label TextColor="White" Grid.Row="1" Grid.Column="1" Text="{Binding Name}" />
-                                        <Label TextColor="White" Grid.Row="2" Grid.Column="0">Symbol:</Label>
-                                        <Label TextColor="White" Grid.Row="2" Grid.Column="1" HorizontalOptions="Start" Text="{Binding Symbol}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <Label Grid.Row="10"
-                           Grid.Column="0"
-                           TextColor="White">Demonym:</Label>
-
-                    <Label Grid.Row="10"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Demonym}"/>
-
-                    <Label Grid.Row="11"
-                           Grid.Column="0"
-                           TextColor="White">Gini index:</Label>
-
-                    <Label Grid.Row="11"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Gini}"/>
-
-                    <Label Grid.Row="12"
-                           Grid.Column="0"
-                           TextColor="White">Languages:</Label>
-
-                    <ListView Grid.Row="12"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="94"
-                              ItemsSource="{Binding Country.Languages}">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <ViewCell>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label TextColor="White" Grid.Row="0" Grid.Column="0">Name:</Label>
-                                        <Label TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Name}" />
-                                        <Label TextColor="White" Grid.Row="1" Grid.Column="0">Native name:</Label>
-                                        <Label TextColor="White" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Text="{Binding NativeName}" />
-                                        <Label TextColor="White" Grid.Row="2" Grid.Column="0">Iso639 1:</Label>
-                                        <Label TextColor="White" Grid.Row="2" Grid.Column="1" Text="{Binding Iso639_1}" />
-                                        <Label TextColor="White" Grid.Row="3" Grid.Column="0">Iso639 2:</Label>
-                                        <Label TextColor="White" Grid.Row="3" Grid.Column="1" Text="{Binding Iso639_2}" />
-                                    </Grid>
-                                </ViewCell>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
                     
-                    <Label Grid.Row="13"
-                           Grid.Column="0"
-                           TextColor="White">Latitude &amp; longitude:</Label>
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Area:
+                    </Label>
 
-                    <ListView Grid.Row="13"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="23"
-                              ItemsSource="{Binding Country.Latlng}">
-                        <ListView.ItemTemplate>
+                    <Label
+                        Grid.Row="4"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Area, StringFormat='{0:N2}'}"/>
+
+                    <Label
+                        Grid.Row="5"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Borders:
+                    </Label>
+
+                    <StackLayout
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.Borders}">
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Label TextColor="White" Text="{Binding}" />
-                                </ViewCell>
+                                <Label
+                                    TextColor="White"
+                                    Text="{Binding}" />
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-
-                    <Label Grid.Row="14"
-                           Grid.Column="0"
-                           TextColor="White">Native name:</Label>
-
-                    <Label Grid.Row="14"
-                           Grid.Column="1"
-                           HorizontalOptions="Start"
-                           TextColor="White"
-                           Text="{Binding Country.NativeName}"/>
-
-                    <Label Grid.Row="15"
-                           Grid.Column="0"
-                           TextColor="White">Numeric code:</Label>
-
-                    <Label Grid.Row="15"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.NumericCode}"/>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
                     
-                    <Label Grid.Row="16"
-                           Grid.Column="0"
-                           TextColor="White">Population:</Label>
+                    <Label
+                        Grid.Row="6"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Calling codes:
+                    </Label>
 
-                    <Label Grid.Row="16"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Population}"/>
-
-                    <Label Grid.Row="17"
-                           Grid.Column="0"
-                           TextColor="White">Region:</Label>
-
-                    <Label Grid.Row="17"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Region}"/>
-
-                    <Label Grid.Row="18"
-                           Grid.Column="0"
-                           TextColor="White">Regional blocks:</Label>
-
-                    <ListView Grid.Row="18"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="150"
-                              ItemsSource="{Binding Country.RegionalBlocs}">
-                        <ListView.ItemTemplate>
+                    <StackLayout
+                        Grid.Row="6"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.CallingCodes}">
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Grid>
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition Width="*"/>
-                                        </Grid.ColumnDefinitions>
-                                        <Grid.RowDefinitions>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                            <RowDefinition Height="Auto"/>
-                                        </Grid.RowDefinitions>
-                                        <Label TextColor="White" Grid.Row="0" Grid.Column="0">Name:</Label>
-                                        <Label TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Name}" />
-                                        <Label TextColor="White" Grid.Row="1" Grid.Column="0">Native name:</Label>
-                                        <Label TextColor="White" Grid.Row="1" Grid.Column="1" HorizontalOptions="Start" Text="{Binding Acronym}" />
-                                        <Label TextColor="White" Grid.Row="2" Grid.Column="0">Other names:</Label>
-                                        <ListView   Grid.Row="2"
-                                                    Grid.Column="1"
-                                                    IsEnabled="False"
-                                                    RowHeight="23"
-                                                    ItemsSource="{Binding OtherNames}">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <ViewCell>
-                                                        <Label TextColor="White" Text="{Binding}" />
-                                                    </ViewCell>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                        <Label  TextColor="White" Grid.Row="3" Grid.Column="0">Other acronyms:</Label>
-                                        <ListView   Grid.Row="3"
-                                                    Grid.Column="1"
-                                                    IsEnabled="False"
-                                                    RowHeight="23"
-                                                    ItemsSource="{Binding OtherAcronyms}">
-                                            <ListView.ItemTemplate>
-                                                <DataTemplate>
-                                                    <ViewCell>
-                                                        <Label TextColor="White" Text="{Binding}" />
-                                                    </ViewCell>
-                                                </DataTemplate>
-                                            </ListView.ItemTemplate>
-                                        </ListView>
-                                    </Grid>
-                                </ViewCell>
+                                <Label
+                                    TextColor="White"
+                                    Text="{Binding}" />
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
 
-                    <Label Grid.Row="19"
-                           Grid.Column="0"
-                           TextColor="White">Subregion:</Label>
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Capital:
+                    </Label>
 
-                    <Label Grid.Row="19"
-                           Grid.Column="1"
-                           TextColor="White"
-                           Text="{Binding Country.Subregion}"/>
+                    <Label
+                        Grid.Row="7"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Capital}"/>
 
-                    <Label Grid.Row="20"
-                           Grid.Column="0"
-                           TextColor="White">Time zones:</Label>
+                    <Label
+                        Grid.Row="8"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Cioc:
+                    </Label>
 
-                    <ListView Grid.Row="20"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="23"
-                              ItemsSource="{Binding Country.Timezones}">
-                        <ListView.ItemTemplate>
+                    <Label
+                        Grid.Row="8"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Cioc}"/>
+
+                    <Label
+                        Grid.Row="9"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Currencies:
+                    </Label>
+
+                    <StackLayout
+                        Grid.Row="9"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.Currencies}">
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Label TextColor="White" Text="{Binding}" />
-                                </ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Code:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{Binding Code}" />
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Name:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        Text="{Binding Name}" />
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Symbol:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Symbol}" />
+                                </Grid>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    
+                    <Label
+                        Grid.Row="10"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Demonym:
+                    </Label>
 
-                    <Label Grid.Row="21"
-                           Grid.Column="0"
-                           TextColor="White">Top level domain:</Label>
+                    <Label
+                        Grid.Row="10"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Demonym}"/>
 
-                    <ListView Grid.Row="21"
-                              Grid.Column="1"
-                              IsEnabled="False"
-                              RowHeight="23"
-                              ItemsSource="{Binding Country.TopLevelDomain}">
-                        <ListView.ItemTemplate>
+                    <Label
+                        Grid.Row="11"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Gini index:
+                    </Label>
+
+                    <Label
+                        Grid.Row="11"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Gini}"/>
+
+                    <Label
+                        Grid.Row="12"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Languages:
+                    </Label>
+
+                    <StackLayout
+                        Grid.Row="12"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.Languages}">
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Label TextColor="White" Text="{Binding}" />
-                                </ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Name:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{Binding Name}" />
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Native name:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding NativeName}" />
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Iso639 1:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        Text="{Binding Iso639_1}" />
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Iso639 2:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        Text="{Binding Iso639_2}" />
+                                </Grid>
                             </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                    
+                    <Label
+                        Grid.Row="13"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Latitude &amp; longitude:
+                    </Label>
 
-                    <Label Grid.Row="22"
-                           Grid.Column="0"
-                           TextColor="White">Translations:</Label>
+                    <StackLayout
+                        Grid.Row="13"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.Latlng}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label
+                                    TextColor="White"
+                                    Text="{Binding}" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
 
-                    <StackLayout    Grid.Row="22"
-                                    Grid.Column="1"
-                                    IsEnabled="False">
+                    <Label
+                        Grid.Row="14"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Native name:
+                    </Label>
+
+                    <Label
+                        Grid.Row="14"
+                        Grid.Column="1"
+                        HorizontalOptions="Start"
+                        TextColor="White"
+                        Text="{Binding Country.NativeName}"/>
+
+                    <Label
+                        Grid.Row="15"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Numeric code:
+                    </Label>
+
+                    <Label
+                        Grid.Row="15"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.NumericCode}"/>
+                    
+                    <Label
+                        Grid.Row="16"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Population:
+                    </Label>
+
+                    <Label
+                        Grid.Row="16"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Population}"/>
+
+                    <Label
+                        Grid.Row="17"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Region:
+                    </Label>
+
+                    <Label
+                        Grid.Row="17"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Region}"/>
+
+                    <Label
+                        Grid.Row="18"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Regional blocks:
+                    </Label>
+
+                    <StackLayout
+                        Grid.Row="18"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.RegionalBlocs}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Name:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        Text="{Binding Name}" />
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Native name:
+                                    </Label>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        HorizontalOptions="Start"
+                                        Text="{Binding Acronym}" />
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Other names:
+                                    </Label>
+                                    <StackLayout
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        IsEnabled="False"
+                                        BindableLayout.ItemsSource="{Binding OtherNames}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label
+                                                    TextColor="White"
+                                                    Text="{Binding}" />
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                    <Label
+                                        TextColor="White"
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        FontAttributes="Bold, Italic">
+                                        Other acronyms:
+                                    </Label>
+                                    <StackLayout
+                                      Grid.Row="3"
+                                      Grid.Column="1"
+                                      IsEnabled="False"
+                                      BindableLayout.ItemsSource="{Binding OtherAcronyms}">
+                                        <BindableLayout.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label
+                                                    TextColor="White"
+                                                    Text="{Binding}" />
+                                            </DataTemplate>
+                                        </BindableLayout.ItemTemplate>
+                                    </StackLayout>
+                                </Grid>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+
+                    <Label
+                        Grid.Row="19"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Subregion:
+                    </Label>
+
+                    <Label
+                        Grid.Row="19"
+                        Grid.Column="1"
+                        TextColor="White"
+                        Text="{Binding Country.Subregion}"/>
+
+                    <Label
+                        Grid.Row="20"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Time zones:
+                    </Label>
+
+                    <StackLayout
+                        Grid.Row="20"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.Timezones}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label
+                                    TextColor="White"
+                                    Text="{Binding}" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+
+                    <Label
+                        Grid.Row="21"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Top level domain:
+                    </Label>
+
+                    <StackLayout
+                        Grid.Row="21"
+                        Grid.Column="1"
+                        IsEnabled="False"
+                        BindableLayout.ItemsSource="{Binding Country.TopLevelDomain}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Label
+                                    TextColor="White"
+                                    Text="{Binding}" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+
+                    <Label
+                        Grid.Row="22"
+                        Grid.Column="0"
+                        TextColor="White"
+                        FontAttributes="Bold, Italic">
+                        Translations:
+                    </Label>
+
+                    <StackLayout
+                        Grid.Row="22"
+                        Grid.Column="1"
+                        IsEnabled="False">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -427,26 +641,127 @@
                                 <RowDefinition Height="Auto"/>
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
-                            <Label TextColor="White" Grid.Row="0" Grid.Column="0">German:</Label>
-                            <Label TextColor="White" Grid.Row="0" Grid.Column="1" Text="{Binding Country.Translations.De}" />
-                            <Label TextColor="White" Grid.Row="1" Grid.Column="0">Spanish:</Label>
-                            <Label TextColor="White" Grid.Row="1" Grid.Column="1" Text="{Binding Country.Translations.Es}" />
-                            <Label TextColor="White" Grid.Row="2" Grid.Column="0">French:</Label>
-                            <Label TextColor="White" Grid.Row="2" Grid.Column="1" Text="{Binding Country.Translations.Fr}" />
-                            <Label TextColor="White" Grid.Row="3" Grid.Column="0">Japanese:</Label>
-                            <Label TextColor="White" Grid.Row="3" Grid.Column="1" Text="{Binding Country.Translations.Ja}" />
-                            <Label TextColor="White" Grid.Row="4" Grid.Column="0">Italian:</Label>
-                            <Label TextColor="White" Grid.Row="4" Grid.Column="1" Text="{Binding Country.Translations.It}" />
-                            <Label TextColor="White" Grid.Row="5" Grid.Column="0">Brazillian-portuguese:</Label>
-                            <Label TextColor="White" Grid.Row="5" Grid.Column="1" Text="{Binding Country.Translations.Br}" />
-                            <Label TextColor="White" Grid.Row="6" Grid.Column="0">Portuguese:</Label>
-                            <Label TextColor="White" Grid.Row="6" Grid.Column="1" Text="{Binding Country.Translations.Pt}" />
-                            <Label TextColor="White" Grid.Row="7" Grid.Column="0">Dutch:</Label>
-                            <Label TextColor="White" Grid.Row="7" Grid.Column="1" Text="{Binding Country.Translations.Nl}" />
-                            <Label TextColor="White" Grid.Row="8" Grid.Column="0">Croatian:</Label>
-                            <Label TextColor="White" Grid.Row="8" Grid.Column="1" Text="{Binding Country.Translations.Hr}" />
-                            <Label TextColor="White" Grid.Row="9" Grid.Column="0">Persian:</Label>
-                            <Label TextColor="White" Grid.Row="9" Grid.Column="1" HorizontalOptions="Start" Text="{Binding Country.Translations.Fa}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                German:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.De}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                Spanish:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.Es}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                French:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.Fr}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                Japanese:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.Ja}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                Italian:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.It}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                Brazillian-portuguese:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.Br}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                Portuguese:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.Pt}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="7"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                Dutch:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="7"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.Nl}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="8"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                Croatian:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="8"
+                                Grid.Column="1"
+                                Text="{Binding Country.Translations.Hr}" />
+                            <Label
+                                TextColor="White"
+                                Grid.Row="9"
+                                Grid.Column="0"
+                                FontAttributes="Bold, Italic">
+                                Persian:
+                            </Label>
+                            <Label
+                                TextColor="White"
+                                Grid.Row="9"
+                                Grid.Column="1"
+                                HorizontalOptions="Start"
+                                Text="{Binding Country.Translations.Fa}" />
                         </Grid>
                     </StackLayout>
                 </Grid>
