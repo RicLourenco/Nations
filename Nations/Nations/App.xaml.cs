@@ -9,6 +9,9 @@ using Nations.Services.Interfaces;
 using Nations.Services.Classes;
 using Syncfusion.Licensing;
 using Xamarin.Essentials;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace Nations
 {
@@ -34,6 +37,13 @@ namespace Nations
                 await NavigationService.NavigateAsync($"NavigationPage/{nameof(CountriesPage)}");
             }
         }
+
+        //protected override void OnStart()
+        //{
+        //    AppCenter.Start()
+
+        //    base.OnStart();
+        //}
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
